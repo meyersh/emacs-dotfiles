@@ -1,0 +1,21 @@
+HTTP/1.0 200 OK
+Date: Wed, 20 Apr 2011 18:37:15 GMT
+Server: PasteWSGIServer/0.5 Python/2.6.5
+Content-Type: application/octet-stream
+Content-Length: 136
+Content-Disposition: attachment; filename*=utf-8''bug557700-4.erb
+X-Cache: MISS from smoothwall.morningside.edu
+Via: 1.0 bazaar.launchpad.net, 1.1 smoothwall.morningside.edu:801 (squid/2.7.STABLE6)
+Connection: Close
+
+var x = 1;
+for (i in l) {
+alert(i);
+}
+<% var.each do |v| %>
+alert(<%= v %>);
+<% end %>
+var z = 4;
+for (i in l) {
+alert(i);
+}
