@@ -35,8 +35,9 @@
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
 
-;;(require 'autopair)
-;;(autopair-global-mode) ;; enable autopair in all buffers 
+;; Autopair stuff.
+(require 'autopair)
+(autopair-global-mode) ;; enable autopair in all buffers 
 ;;
 (setq tramp-default-method "ssh")
 
@@ -80,9 +81,12 @@
     (c-offsets-alist
      (statement-block-intro . 0))))
 
-(add-hook 'c-mode-common-hook
-  '(lambda ()
-    (c-add-style "RANDY" randys-c-style t)))
+(defun my-c-mode-hook ()
+  (c-add-style "RANDY" randys-c-style t)
+  (define-key c-mode-base-map "." 'semantic-complete-self-insert)
+  (define-key c-mode-base-map ">" 'semantic-complete-self-insert))
+
+(add-hook 'c-mode-common-hook 'my-c-mode-hook)
 
 ; fix meta on Solaris
 (if (eq system-type 'usg-unix-v)
@@ -110,6 +114,11 @@
 ;; Python stuff
 (setq-default indent-tabls-mode nil)
 (setq-default tab-width 4)
+(defun my-python-mode-hook ()
+ (define-key python-mode-map "." 'semantic-complete-self-insert)
+ (line-number-mode 1))
+
+(add-hook 'python-mode-hook 'my-python-mode-hook)
 
 ;; Google Apps stuff
 (setq g-user-email "meyersh@morningside.edu")
@@ -117,3 +126,24 @@
 
 ;; Ido mode (pretty cool)
 (ido-mode t)
+
+;; Put autosave files (ie #foo#) and backup files (ie foo~) in ~/.emacs.d/.
+(custom-set-variables
+  '(auto-save-file-name-transforms '((".*" "~/.emacs-autosaves/\\1" t)))
+  '(backup-directory-alist '((".*" . "~/.emacs-backups/"))))
+
+;; create the autosave dir if necessary, since emacs won't.
+(make-directory "~/.emacs-autosaves/" t)
+(make-directory "~/.emacs-backups/" t)
+
+;; Enable cedet
+(load-file "~/.emacs.d/cedet/common/cedet.el")
+; I don't really plan on using projects.
+(global-ede-mode nil)
+(require 'semantic-ia)
+(semantic-load-enable-gaudy-code-helpers)
+(semantic-add-system-include "/usr/lib/python2.6/" 'python-mode)
+(setq semantic-python-dependency-system-include-path
+      '("/usr/lib/python2.6/"))
+
+
