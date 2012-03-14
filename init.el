@@ -3,13 +3,15 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
+ '(auto-save-file-name-transforms (quote ((".*" "~/.emacs-autosaves/\\1" t))))
+ '(backup-directory-alist (quote ((".*" . "~/.emacs-backups/"))))
  '(c-default-style (quote ((java-mode . "java") (awk-mode . "awk") (other . "gnu"))))
  '(c-report-syntactic-errors t)
  '(column-number-mode t)
  '(confirm-kill-emacs nil)
  '(face-font-family-alternatives (quote (("Monospace" "courier" "fixed") ("courier" "CMU Typewriter Text" "fixed") ("Sans Serif" "helv" "helvetica" "arial" "fixed") ("helv" "helvetica" "arial" "fixed"))))
  '(inhibit-startup-screen t)
- '(lpr-command "/usr/bin/lpr")
+ '(lpr-command "/usr/local/bin/lpr-cups")
  '(nxhtml-autoload-web nil t)
  '(org-agenda-files (quote ("~/Work.org")))
  '(org-fontify-done-headline nil)
@@ -23,7 +25,7 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- '(default ((t (:inherit nil :stipple nil :background "white" :foreground "black" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 113 :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
+ '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 113 :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
 
 (add-to-list 'load-path "~/.emacs-extensions") ;; comment if autopair.el is in standard load path 
 (add-to-list 'load-path "~/.emacs.d/el")
@@ -35,10 +37,17 @@
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
 
+;; Puppet stuff
+(autoload 'puppet-mode "puppet-mode" "Major mode for editing puppet code." t)
+(add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
+
 ;; Autopair stuff.
-(require 'autopair)
-(autopair-global-mode) ;; enable autopair in all buffers 
+;;(require 'autopair)
+;;(autopair-global-mode) ;; enable autopair in all buffers 
 ;;
+
+;; Tramp settings
+(require 'tramp)
 (setq tramp-default-method "ssh")
 
 ;;; This was installed by package-install.el.
@@ -125,12 +134,10 @@
 ;(load-library "g")
 
 ;; Ido mode (pretty cool)
-(ido-mode t)
+;;(ido-mode t)
 
 ;; Put autosave files (ie #foo#) and backup files (ie foo~) in ~/.emacs.d/.
-(custom-set-variables
-  '(auto-save-file-name-transforms '((".*" "~/.emacs-autosaves/\\1" t)))
-  '(backup-directory-alist '((".*" . "~/.emacs-backups/"))))
+
 
 ;; create the autosave dir if necessary, since emacs won't.
 (make-directory "~/.emacs-autosaves/" t)
@@ -147,3 +154,18 @@
       '("/usr/lib/python2.6/"))
 
 
+;; Taken from the comment section in inf-ruby.el
+(autoload 'ruby-mode "ruby-mode" "Mode for editing ruby source files")
+(add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
+(add-to-list 'interpreter-mode-alist '("ruby" . ruby-mode))
+(autoload 'run-ruby "inf-ruby" "Run an inferior Ruby process")
+(autoload 'inf-ruby-keys "inf-ruby" "Set local key defs for inf-ruby in ruby-mode")
+(add-hook 'ruby-mode-hook '(lambda () (inf-ruby-keys)))
+
+;; Some pretty colors
+;(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/color-theme/")
+;(require 'color-theme)
+;(eval-after-load "color-theme"
+;  '(progn
+;	(color-theme-initialize)
+;	(color-theme-subtle-hacker)))
