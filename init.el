@@ -149,9 +149,14 @@
 (global-ede-mode nil)
 (require 'semantic-ia)
 (semantic-load-enable-gaudy-code-helpers)
-(semantic-add-system-include "/usr/lib/python2.6/" 'python-mode)
-(setq semantic-python-dependency-system-include-path
-      '("/usr/lib/python2.6/"))
+(semantic-add-system-include "/usr/local/lib/python2.7" 'python-mode)
+;;(setq semantic-python-dependency-system-include-path
+;;      '("/usr/lib/python2.6/"))
+
+
+(semantic-add-system-include "/usr/include/c++/4.2" 'c++-mode)
+(semantic-add-system-include "/usr/include/c++/4.2" 'c-mode)
+
 
 
 ;; Taken from the comment section in inf-ruby.el
