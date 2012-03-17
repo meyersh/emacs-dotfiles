@@ -38,6 +38,7 @@
 (add-to-list 'load-path "~/.emacs.d")
 (add-to-list 'load-path "~/.emacs.d/g-client")
 
+;; Bring in some common lisp (right now used for the `case` function below.
 (require 'cl)
 
 ;; PHP stuff
@@ -73,7 +74,7 @@
 (case system-type
   ('darwin
    (setq browse-url-generic-function 'browse-url-default-macosx-browser))
-  ('gnu 
+  ('gnu/linux
    (setq browse-url-generic-program "/usr/bin/google-chrome"
 		 browse-url-browser-function 'browse-url-generic))
   ('berkeley-unix
@@ -81,9 +82,14 @@
 		 browse-url-browser-function 'browse-url-generic)))
 
 ;;;; SLIME Stuff
-(if (eq system-type 'darwin)
-    (setq inferior-lisp-program "/usr/local/bin/sbcl") ; MacOSX Lisp system
-    (setq inferior-lisp-program "/usr/bin/sbcl")) ; your Lisp system
+(case system-type
+  ('darwin     
+   (setq inferior-lisp-program "/usr/local/bin/sbcl")) ; MacOSX Lisp system
+  ('gnu/linux
+   (setq inferior-lisp-program "/usr/bin/sbcl"))       ; Linux Lisp system
+  ('berkeley-unix
+   (setq inferior-lisp-program "/usr/local/bin/sbcl"))) ; FreeBSD Lisp system
+
 (setq lisp-indent-function 'common-lisp-indent-function
       slime-complete-symbol-function 'slime-fuzzy-complete-symbol)
 (add-to-list 'load-path "~/.emacs.d/slime/")  ; your SLIME directory
@@ -97,35 +103,35 @@
 ;;;; cpp indentation (RANDY-MODE)
 ;; This is based on the GNU style with the basic-offset
 ;; set to 3 per the style guide
-										;(defconst randys-c-style
-										;  '("gnu"
-										;    (c-basic-offset . 3)
-										;    (c-offsets-alist
-										;     (statement-block-intro . 0))))
+;;(defconst randys-c-style
+;;  '("gnu"
+;;    (c-basic-offset . 3)
+;;    (c-offsets-alist
+;;     (statement-block-intro . 0))))
 
 (defun my-c-mode-hook ()
-										;  (c-add-style "RANDY" randys-c-style t)
+;;  (c-add-style "RANDY" randys-c-style t)
   (define-key c-mode-base-map "." 'semantic-complete-self-insert)
   (define-key c-mode-base-map ">" 'semantic-complete-self-insert))
 
 (add-hook 'c-mode-common-hook 'my-c-mode-hook)
 
-										; fix meta on Solaris
+;; fix meta on Solaris
 (if (eq system-type 'usg-unix-v)
     (setq x-alt-keysym 'meta))
 
-										; OrgMode keys
+;; OrgMode keys
 (global-set-key (kbd "C-c a") 'org-agenda)
 
-										; TODO Dependencies (protect blocked todo's)
+;; TODO Dependencies (protect blocked todo's)
 (setq org-enforce-todo-dependencies t)
 (setq org-enforce-todo-checkbox-dependencies t)
 (setq org-agenda-dim-blocked-tasks t)
 
-										; Log TODO done times
+;; Log TODO done times
 (setq org-log-done 'time)
 
-										; Keep scheduled items out of global TODO list
+;; Keep scheduled items out of global TODO list
 (setq org-agenda-todo-ignore-scheduled t)
 
 (setq org-agenda-todo-list-sublevels nil)
@@ -144,7 +150,7 @@
 
 ;; Google Apps stuff
 (setq g-user-email "meyersh@morningside.edu")
-										;(load-library "g")
+;;(load-library "g")
 
 ;; Ido mode (pretty cool)
 (ido-mode t)
@@ -162,7 +168,7 @@
 ;; Save semantic stuff in ~/.emacs.d/semanticdb
 (setq semanticdb-default-save-directory "~/.emacs.d/semanticdb")
 
-										; I don't really plan on using projects.
+;; I don't really plan on using projects.
 (global-ede-mode nil)
 (require 'semantic-ia)
 (semantic-load-enable-gaudy-code-helpers)
@@ -177,8 +183,6 @@
    (semantic-add-system-include "/usr/include/c++/4.2" 'c-mode))
   (t nil)) ; This is silly, but I may want to add other paths later.
 
-
-
 ;; Taken from the comment section in inf-ruby.el
 (autoload 'ruby-mode "ruby-mode" "Mode for editing ruby source files")
 (add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
@@ -188,9 +192,20 @@
 (add-hook 'ruby-mode-hook '(lambda () (inf-ruby-keys)))
 
 ;; Some pretty colors
-										;(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/color-theme/")
-										;(require 'color-theme)
-										;(eval-after-load "color-theme"
-										;  '(progn
-										;	(color-theme-initialize)
-										;	(color-theme-subtle-hacker)))
+;;(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/color-theme/")
+;;(require 'color-theme)
+;;(eval-after-load "color-theme"
+;;  '(progn
+;;	(color-theme-initialize)
+;;	(color-theme-subtle-hacker)))
+
+;; Re-enable the erase-buffer command. Mua
+(put 'erase-buffer 'disabled nil)
+
+;; Git stuff
+(case system-type
+  ('gnu/linux
+   (load "/usr/share/doc/git-1.7.7.6/contrib/emacs/git.el")
+   (load "/usr/share/doc/git-1.7.7.6/contrib/emacs/git-blame.el")
+   (load "/usr/share/emacs/23.3/lisp/vc-git.elc")
+   (add-to-list 'vc-handled-backends 'GIT)))
