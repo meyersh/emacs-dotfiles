@@ -213,10 +213,17 @@
    (load "/usr/share/doc/git-1.7.7.6/contrib/emacs/git.el")
    (load "/usr/share/doc/git-1.7.7.6/contrib/emacs/git-blame.el")
    (load "/usr/share/emacs/23.3/lisp/vc-git.elc")
-   (add-to-list 'vc-handled-backends 'GIT)))
+   (add-to-list 'vc-handled-backends 'GIT))
+  ('berkeley-unix
+   (load-library "git")
+   (load-library "git-blame")
+   (load-library "vc-git")
+   (add-to-list 'vc-handled-backends 'GIT))
+)
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  )
+
