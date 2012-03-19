@@ -109,8 +109,13 @@
 ;;    (c-offsets-alist
 ;;     (statement-block-intro . 0))))
 
+(defconst gnu-c-style-with-4-spaces
+  '("gnu"
+     (c-basic-offset . 4)))
+
 (defun my-c-mode-hook ()
 ;;  (c-add-style "RANDY" randys-c-style t)
+  (setq c-basic-offset 4)
   (define-key c-mode-base-map "." 'semantic-complete-self-insert)
   (define-key c-mode-base-map ">" 'semantic-complete-self-insert))
 
