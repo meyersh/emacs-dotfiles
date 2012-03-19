@@ -5,17 +5,17 @@
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
  '(auto-save-file-name-transforms (quote ((".*" "~/.emacs-autosaves/\\1" t))))
  '(backup-directory-alist (quote ((".*" . "~/.emacs-backups/"))))
  '(c-default-style (quote ((java-mode . "java") (awk-mode . "awk") (other . "gnu"))))
  '(c-report-syntactic-errors t)
  '(column-number-mode t)
  '(confirm-kill-emacs nil)
- ;; '(face-font-family-alternatives (quote (("Monospace" "courier" "fixed") ("courier" "CMU Typewriter Text" "fixed") ("Sans Serif" "helv" "helvetica" "arial" "fixed") ("helv" "helvetica" "arial" "fixed"))))
+ '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(lpr-command "/usr/local/bin/lpr-cups")
  '(nxhtml-autoload-web nil t)
@@ -214,3 +214,9 @@
    (load "/usr/share/doc/git-1.7.7.6/contrib/emacs/git-blame.el")
    (load "/usr/share/emacs/23.3/lisp/vc-git.elc")
    (add-to-list 'vc-handled-backends 'GIT)))
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ )
