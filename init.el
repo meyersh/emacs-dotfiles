@@ -81,6 +81,10 @@
    (setq browse-url-generic-program "/usr/local/bin/chrome"
 		 browse-url-browser-function 'browse-url-generic)))
 
+;; Dim parens in lisp-like languages.
+(require 'parenface)
+(set-face-foreground 'paren-face "gray75")
+
 ;;;; SLIME Stuff
 (case system-type
   ('darwin     
