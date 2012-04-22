@@ -220,3 +220,8 @@
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
  )
+
+;; Ace move mode
+(add-to-list 'load-path "~/.emacs.d/ace-jump-mode/")
+(require 'ace-jump-mode)
+(define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
