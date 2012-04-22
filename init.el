@@ -81,6 +81,10 @@
    (setq browse-url-generic-program "/usr/local/bin/chrome"
 		 browse-url-browser-function 'browse-url-generic)))
 
+;; Dim parens in lisp-like languages.
+(require 'parenface)
+(set-face-foreground 'paren-face "gray75")
+
 ;;;; SLIME Stuff
 (case system-type
   ('darwin     
@@ -213,7 +217,13 @@
    (load "/usr/share/doc/git-1.7.7.6/contrib/emacs/git.el")
    (load "/usr/share/doc/git-1.7.7.6/contrib/emacs/git-blame.el")
    (load "/usr/share/emacs/23.3/lisp/vc-git.elc")
-   (add-to-list 'vc-handled-backends 'GIT)))
+   (add-to-list 'vc-handled-backends 'GIT))
+  ('berkeley-unix
+   (load-library "git")
+   (load-library "git-blame")
+   (load-library "vc-git")
+   (add-to-list 'vc-handled-backends 'GIT))
+)
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
@@ -225,3 +235,4 @@
 (add-to-list 'load-path "~/.emacs.d/ace-jump-mode/")
 (require 'ace-jump-mode)
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+
