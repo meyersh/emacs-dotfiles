@@ -5,16 +5,17 @@
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(auto-save-file-name-transforms (quote ((".*" "~/.emacs-autosaves/\\1" t))))
  '(backup-directory-alist (quote ((".*" . "~/.emacs-backups/"))))
  '(c-default-style (quote ((java-mode . "java") (awk-mode . "awk") (other . "gnu"))))
  '(c-report-syntactic-errors t)
  '(column-number-mode t)
  '(confirm-kill-emacs nil)
+ '(custom-safe-themes (quote ("6cfe5b2f818c7b52723f3e121d1157cf9d95ed8923dbc1b47f392da80ef7495d" default)))
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(lpr-command "/usr/local/bin/lpr-cups")
@@ -23,7 +24,7 @@
  '(org-fontify-done-headline nil)
  '(org-hide-leading-stars t)
  '(printer-name "rh1comp")
- '(server-host "fiery.morningside.edu")
+ '(server-host "localhost")
  '(server-mode t)
  '(server-use-tcp t))
 ;;(custom-set-faces
@@ -64,10 +65,15 @@
 ;;; interfacing with ELPA, the package archive.
 ;;; Move this code earlier if you want to reference
 ;;; packages in your .emacs.
-(when
-    (load
-     (expand-file-name "~/.emacs.d/elpa/package.el"))
-  (package-initialize))
+;; (when
+;;     (load
+;;      (expand-file-name "~/.emacs.d/elpa/package.el"))
+;;   (package-initialize))
+
+;; ;; Add melpa (I think)
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
 ;; Set default browser to macosx-default-browser otherwise 
 ;; /usr/bin/firefox, depending on platform.
@@ -200,13 +206,6 @@
 (autoload 'inf-ruby-keys "inf-ruby" "Set local key defs for inf-ruby in ruby-mode")
 (add-hook 'ruby-mode-hook '(lambda () (inf-ruby-keys)))
 
-;; Some pretty colors
-;;(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/color-theme/")
-;;(require 'color-theme)
-;;(eval-after-load "color-theme"
-;;  '(progn
-;;	(color-theme-initialize)
-;;	(color-theme-subtle-hacker)))
 
 ;; Re-enable the erase-buffer command. Mua
 (put 'erase-buffer 'disabled nil)
@@ -225,14 +224,19 @@
    (add-to-list 'vc-handled-backends 'GIT))
 )
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  )
 
 ;; Ace move mode
 (add-to-list 'load-path "~/.emacs.d/ace-jump-mode/")
 (require 'ace-jump-mode)
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+
+;; Some pretty colors
+;; (load-theme 'twilight) ;; This doesn't work for some reason.
+(load-theme 'wheatgrass)
+
 
