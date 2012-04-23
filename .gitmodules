@@ -1,0 +1,3 @@
+[submodule "ace-jump-mode"]
+	path = ace-jump-mode
+	url = ./ace-jump-mode/
