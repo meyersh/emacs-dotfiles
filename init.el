@@ -231,3 +231,10 @@
   ;; If there is more than one, they won't work right.
  )
 
+;; Haskell stuff
+(load "~/.emacs.d/haskell-mode/haskell-site-file")
+(custom-set-variables
+     '(haskell-mode-hook '(turn-on-haskell-indentation)))
+
+
+
