@@ -42,6 +42,12 @@
 ;; Bring in some common lisp (right now used for the `case` function below.
 (require 'cl)
 
+;; ;; Add melpa (I think)
+(when (require 'package)
+  (add-to-list 'package-archives
+               '("melpa" . "http://melpa.milkbox.net/packages/") t)
+  (package-initialize))
+
 ;; PHP stuff
 (autoload 'php-mode "php-mode" "Major mode for editing php code." t)
 (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
@@ -59,21 +65,6 @@
 ;; Tramp settings
 (require 'tramp)
 (setq tramp-default-method "ssh")
-
-;;; This was installed by package-install.el.
-;;; This provides support for the package system and
-;;; interfacing with ELPA, the package archive.
-;;; Move this code earlier if you want to reference
-;;; packages in your .emacs.
-;; (when
-;;     (load
-;;      (expand-file-name "~/.emacs.d/elpa/package.el"))
-;;   (package-initialize))
-
-;; ;; Add melpa (I think)
-(require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
 ;; Set default browser to macosx-default-browser otherwise 
 ;; /usr/bin/firefox, depending on platform.
@@ -231,12 +222,12 @@
  )
 
 ;; Haskell stuff
-(load "~/.emacs.d/haskell-mode/haskell-site-file")
+;(load "~/.emacs.d/haskell-mode/haskell-site-file")
 (custom-set-variables
      '(haskell-mode-hook '(turn-on-haskell-indentation)))
 
 ;; Ace move mode
-(add-to-list 'load-path "~/.emacs.d/ace-jump-mode/")
+;;(add-to-list 'load-path "~/.emacs.d/ace-jump-mode/")
 (require 'ace-jump-mode)
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
