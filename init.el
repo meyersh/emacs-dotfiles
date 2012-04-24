@@ -15,7 +15,8 @@
  '(c-report-syntactic-errors t)
  '(column-number-mode t)
  '(confirm-kill-emacs nil)
- '(custom-safe-themes (quote ("6cfe5b2f818c7b52723f3e121d1157cf9d95ed8923dbc1b47f392da80ef7495d" default)))
+ '(custom-safe-themes (quote ("6938c51c0a89f078c61b979af23ae4c32204458f16a6a08c1a683ab478a7bc6b" "6cfe5b2f818c7b52723f3e121d1157cf9d95ed8923dbc1b47f392da80ef7495d" default)))
+ '(haskell-mode-hook (quote (turn-on-haskell-indentation)))
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(lpr-command "/usr/local/bin/lpr-cups")
@@ -203,17 +204,17 @@
 
 ;; Git stuff
 (case system-type
-  ('gnu/linux
-   (load "/usr/share/doc/git-1.7.7.6/contrib/emacs/git.el")
-   (load "/usr/share/doc/git-1.7.7.6/contrib/emacs/git-blame.el")
-   (load "/usr/share/emacs/23.3/lisp/vc-git.elc")
-   (add-to-list 'vc-handled-backends 'GIT))
+  ;; ('gnu/linux
+  ;;  (load "/usr/share/doc/git-1.7.7.6/contrib/emacs/git.el")
+  ;;  (load "/usr/share/doc/git-1.7.7.6/contrib/emacs/git-blame.el")
+  ;;  (load "/usr/share/emacs/23.3/lisp/vc-git.elc")
+  ;;   (add-to-list 'vc-handled-backends 'GIT))
   ('berkeley-unix
    (load-library "git")
    (load-library "git-blame")
    (load-library "vc-git")
-   (add-to-list 'vc-handled-backends 'GIT))
-)
+   (add-to-list 'vc-handled-backends 'GIT)))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -223,8 +224,7 @@
 
 ;; Haskell stuff
 ;(load "~/.emacs.d/haskell-mode/haskell-site-file")
-(custom-set-variables
-     '(haskell-mode-hook '(turn-on-haskell-indentation)))
+
 
 ;; Ace move mode
 ;;(add-to-list 'load-path "~/.emacs.d/ace-jump-mode/")
@@ -233,6 +233,6 @@
 
 ;; Some pretty colors
 ;; (load-theme 'twilight) ;; This doesn't work for some reason.
-(load-theme 'wheatgrass)
+(load-theme 'zenburn)
 
 
