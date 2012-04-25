@@ -204,17 +204,17 @@
 
 ;; Git stuff
 (case system-type
-  ('gnu/linux
-   (load "/usr/share/doc/git-1.7.7.6/contrib/emacs/git.el")
-   (load "/usr/share/doc/git-1.7.7.6/contrib/emacs/git-blame.el")
-   (load "/usr/share/emacs/23.3/lisp/vc-git.elc")
-   (add-to-list 'vc-handled-backends 'GIT))
+  ;; ('gnu/linux
+  ;;  (load "/usr/share/doc/git-1.7.7.6/contrib/emacs/git.el")
+  ;;  (load "/usr/share/doc/git-1.7.7.6/contrib/emacs/git-blame.el")
+  ;;  (load "/usr/share/emacs/23.3/lisp/vc-git.elc")
+  ;;   (add-to-list 'vc-handled-backends 'GIT))
   ('berkeley-unix
    (load-library "git")
    (load-library "git-blame")
    (load-library "vc-git")
-   (add-to-list 'vc-handled-backends 'GIT))
-)
+   (add-to-list 'vc-handled-backends 'GIT)))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -237,6 +237,6 @@
 
 ;; Some pretty colors
 ;; (load-theme 'twilight) ;; This doesn't work for some reason.
-(load-theme 'wheatgrass)
+(load-theme 'zenburn)
 
 
