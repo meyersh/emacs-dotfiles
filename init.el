@@ -234,6 +234,14 @@
 ;; Electric pair 
 (electric-pair-mode)
 
+;; Gmail?
+;; (gnus config)
+(setq gnus-select-method '(nnimap "gmail"
+				  (nnimap-address "imap.gmail.com")
+				  (nnimap-server-port 993)
+				  (nnimap-stream ssl)))
+
+
 
 ;; Some pretty colors
 ;; (load-theme 'twilight) ;; This doesn't work for some reason.
