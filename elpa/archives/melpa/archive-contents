@@ -99,7 +99,7 @@
 		 (0 8 1)))
 	       "Saner defaults and goodies. [source: github]" tar])
  (solarized-theme .
-		  [(20120419)
+		  [(20120422)
 		   nil "The Solarized color theme, ported to Emacs. [source: github]" tar])
  (smooth-scrolling .
 		   [(20111206)
@@ -114,7 +114,7 @@
 	     [(20120403)
 	      nil "slime extensions for ritz [source: github]" single])
  (slime .
-	[(20120411)
+	[(20120423)
 	 nil "Superior Lisp Interaction Mode for Emacs [source: github]" single])
  (scss-mode .
 	    [(20110831)
@@ -128,7 +128,7 @@
       [(20120201)
        nil "Emacs integration for rvm [source: github]" single])
  (ruby-tools .
-	     [(20120418)
+	     [(20120424)
 	      nil "Collection of handy functions for ruby-mode [source: github]" single])
  (ruby-mode .
 	    [(20110630)
@@ -171,12 +171,12 @@
 	    nil "No description available. [source: git]" tar])
  (rainbow-delimiters .
 		     [(20111125)
-		      nil "Highlight nested parens, brackets, braces a different color at each depth. [source: wiki]" single])
+		      nil "Highlight nested parens, brackets, braces a different color at each depth. [source: github]" single])
  (python .
 	 [(20120422)
 	  nil "Python's flying circus support for Emacs [source: github]" single])
  (projectile .
-	     [(20120412)
+	     [(20120423)
 	      nil "Manage and navigate projects in Emacs easily [source: github]" single])
  (pretty-mode .
 	      [(20100804)
@@ -314,6 +314,9 @@
  (nav .
       [(20110220)
        nil "Emacs mode for filesystem navigation [source: hg]" tar])
+ (mysql2sqlite .
+	       [(20120423)
+		nil "Convert mysql databases into sqlite databases. [source: github]" single])
  (multi-web-mode .
 		 [(20110821)
 		  nil "multiple major mode support for web editing [source: github]" tar])
@@ -411,7 +414,7 @@
 		      [(20110817)
 		       nil "highlight the word the point is on [source: github]" single])
  (icicles .
-	  [(20120422)
+	  [(20120424)
 	   nil "Minibuffer input completion and cycling. [source: wiki]" tar])
  (ibuffer-vc .
 	     [(20111221)
@@ -436,8 +439,8 @@
 		     (0 6)))
 		   "Helm integration for Projectile [source: github]" single])
  (helm .
-       [(20120421)
-	nil "nil [source: github]" tar])
+       [(20120424)
+	nil "Helm is an Emacs incremental and narrowing framework [source: github]" tar])
  (haskell-mode .
 	       [(20120420)
 		nil "A Haskell editing mode    -*-coding: iso-8859-1;-*- [source: github]" tar])
@@ -544,6 +547,9 @@
  (enclose .
 	  [(20120403)
 	   nil "Enclose cursor within punctuation pairs [source: github]" single])
+ (emacs-setup .
+	      [(20120423)
+	       nil "Package for maintaining your emacs configuration. Clean up your .emacs! [source: github]" tar])
  (elscreen .
 	   [(20120413)
 	    nil "Emacs window session manager [source: github]" single])
@@ -557,7 +563,7 @@
        [(20081128)
 	nil "simplified find-file, revert-file, save-buffer interface [source: wiki]" single])
  (dired+ .
-	 [(20120405)
+	 [(20120423)
 	  nil "Extensions to Dired. [source: wiki]" single])
  (delim-kill .
 	     [(20100517)

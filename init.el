@@ -15,7 +15,8 @@
  '(c-report-syntactic-errors t)
  '(column-number-mode t)
  '(confirm-kill-emacs nil)
- '(custom-safe-themes (quote ("6cfe5b2f818c7b52723f3e121d1157cf9d95ed8923dbc1b47f392da80ef7495d" default)))
+ '(custom-safe-themes (quote ("6938c51c0a89f078c61b979af23ae4c32204458f16a6a08c1a683ab478a7bc6b" "6cfe5b2f818c7b52723f3e121d1157cf9d95ed8923dbc1b47f392da80ef7495d" default)))
+ '(haskell-mode-hook (quote (turn-on-haskell-indentation)))
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(lpr-command "/usr/local/bin/lpr-cups")
@@ -223,13 +224,16 @@
 
 ;; Haskell stuff
 ;(load "~/.emacs.d/haskell-mode/haskell-site-file")
-(custom-set-variables
-     '(haskell-mode-hook '(turn-on-haskell-indentation)))
+
 
 ;; Ace move mode
 ;;(add-to-list 'load-path "~/.emacs.d/ace-jump-mode/")
 (require 'ace-jump-mode)
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
+
+;; Electric pair 
+(electric-pair-mode)
+
 
 ;; Some pretty colors
 ;; (load-theme 'twilight) ;; This doesn't work for some reason.
