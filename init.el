@@ -19,7 +19,7 @@
  '(haskell-mode-hook (quote (turn-on-haskell-indentation)))
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
- '(lpr-command "/usr/local/bin/lpr-cups")
+ '(lpr-command "/usr/bin/lpr")
  '(nxhtml-autoload-web nil t)
  '(org-agenda-files (quote ("~/Work.org")))
  '(org-fontify-done-headline nil)
@@ -27,7 +27,8 @@
  '(printer-name "rh1comp")
  '(server-host "localhost")
  '(server-mode t)
- '(server-use-tcp t))
+ '(server-use-tcp t)
+ '(cursor-type 'bar))
 ;;(custom-set-faces
 ;; custom-set-faces was added by Custom.
 ;; If you edit it by hand, you could mess it up, so be careful.
@@ -141,7 +142,7 @@
 ;; Keep scheduled items out of global TODO list
 (setq org-agenda-todo-ignore-scheduled t)
 
-(setq org-agenda-todo-list-sublevels nil)
+(setq org-agenda-todo-list-sublevels t)
 
 (if (eq system-type 'darwin)
     (global-set-key (kbd "C-c a") 'org-agenda))
