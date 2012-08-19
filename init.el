@@ -248,4 +248,10 @@
 ;; (load-theme 'twilight) ;; This doesn't work for some reason.
 (load-theme 'zenburn)
 
+;; Yas Snippets
+(require 'yasnippet)
+(setq yas/root-directory '("~/.emacs.d/yassnippets/"))
+                          
+; Load all directories
+(mapc 'yas/load-directory yas/root-directory)
 

@@ -1,0 +1,42 @@
+;;; Compiled snippets and support files for `ruby-mode'
+;;; Snippet definitions:
+;;;
+(yas-define-snippets 'ruby-mode
+                     '(("=b" "=begin rdoc\n  $0\n=end" "=b" nil nil nil nil nil nil)
+                       ("Comp" "include Comparable\n\ndef <=> other\n  $0\nend" "include Comparable; def <=> ... end" nil nil nil nil nil nil)
+                       ("all" "all? { |${e}| $0 }" "all? { |...| ... }" nil nil nil nil nil nil)
+                       ("am" "alias_method :${new_name}, :${old_name}" "alias_method new, old" nil nil nil nil nil nil)
+                       ("any" "any? { |${e}| $0 }" "any? { |...| ... }" nil nil nil nil nil nil)
+                       ("app" "if __FILE__ == $PROGRAM_NAME\n  $0\nend" "if __FILE__ == $PROGRAM_NAME ... end" nil nil nil nil nil nil)
+                       ("bm" "Benchmark.bmbm(${1:10}) do |x|\n  $0\nend" "Benchmark.bmbm(...) do ... end" nil nil nil nil nil nil)
+                       ("case" "case ${1:object}\nwhen ${2:condition}\n  $0\nend" "case ... end" nil nil nil nil nil nil)
+                       ("cla" "class << ${self}\n  $0\nend" "class << self ... end" nil nil nil nil nil nil)
+                       ("classify" "classify { |${e}| $0 }" "classify { |...| ... }" nil nil nil nil nil nil)
+                       ("cls" "class ${Name}\n  $0\nend" "class ... end" nil nil nil nil nil nil)
+                       ("collect" "collect { |${e}| $0 }" "collect { |...| ... }" nil nil nil nil nil nil)
+                       ("dee" "Marshal.load(Marshal.dump($0))" "deep_copy(...)" nil nil nil nil nil nil)
+                       ("deli" "delete_if { |${e} $0 }" "delete_if { |...| ... }" nil nil nil nil nil nil)
+                       ("det" "detect { |${e}| $0 }" "detect { |...| ... }" nil nil nil nil nil nil)
+                       ("ea" "each { |${e}| $0 }" "each { |...| ... }" nil nil nil nil nil nil)
+                       ("eac" "each_cons(${1:2}) { |${group}| $0 }" "each_cons(...) { |...| ... }" nil nil nil nil nil nil)
+                       ("eai" "each_index { |${i}| $0 }" "each_index { |i| ... }" nil nil nil nil nil nil)
+                       ("eav" "each_value { |${val}| $0 }" "each_value { |val| ... }" nil nil nil nil nil nil)
+                       ("eawi" "each_with_index { |${e}, ${i}| $0 }" "each_with_index { |e, i| ... }" nil nil nil nil nil nil)
+                       ("forin" "for ${1:element} in ${2:collection}\n  $0\nend" "for ... in ...; ... end" nil nil nil nil nil nil)
+                       ("if" "if ${1:condition}\n  $0\nend" "if ... end" nil nil nil nil nil nil)
+                       ("ife" "if ${1:condition}\n  $2\nelse\n  $3\nend" "if ... else ... end" nil nil nil nil nil nil)
+                       ("inject" "inject(${1:0}) { |${2:injection}, ${3:element}| $0 }" "inject(...) { |...| ... }" nil nil nil nil nil nil)
+                       ("mm" "def method_missing(method, *args)\n  $0\nend" "def method_missing ... end" nil nil nil nil nil nil)
+                       ("r" "attr_reader :" "attr_reader ..." nil nil nil nil nil nil)
+                       ("rb" "#!/usr/bin/ruby -wKU\n" "/usr/bin/ruby -wKU" nil nil nil nil nil nil)
+                       ("reject" "reject { |${1:element}| $0 }" "reject { |...| ... }" nil nil nil nil nil nil)
+                       ("req" "require \"$0\"" "require \"...\"" nil nil nil nil nil nil)
+                       ("rreq" "require File.join(File.dirname(__FILE__), $0)" "require File.join(File.dirname(__FILE__), ...)" nil nil nil nil nil nil)
+                       ("rw" "attr_accessor :" "attr_accessor ..." nil nil nil nil nil nil)
+                       ("select" "select { |${1:element}| $0 }" "select { |...| ... }" nil nil nil nil nil nil)
+                       ("w" "attr_writer :" "attr_writer ..." nil nil nil nil nil nil)
+                       ("y" ":yields: $0" ":yields: arguments (rdoc)" nil nil nil nil nil nil)
+                       ("zip" "zip(${enums}) { |${row}| $0 }" "zip(...) { |...| ... }" nil nil nil nil nil nil)))
+
+
+;;; Do not edit! File generated at Sat Aug 18 22:05:43 2012
