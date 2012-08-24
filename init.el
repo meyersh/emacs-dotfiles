@@ -106,11 +106,11 @@
 ;;;; cpp indentation (RANDY-MODE)
 ;; This is based on the GNU style with the basic-offset
 ;; set to 3 per the style guide
-;;(defconst randys-c-style
-;;  '("gnu"
-;;    (c-basic-offset . 3)
-;;    (c-offsets-alist
-;;     (statement-block-intro . 0))))
+(defconst randys-c-style
+ '("gnu"
+   (c-basic-offset . 3)
+   (c-offsets-alist
+    (statement-block-intro . 0))))
 
 ;; Hello, Emacs.
 (setq user-full-name "Shaun Meyer")
@@ -120,7 +120,7 @@
      (c-basic-offset . 4)))
 
 (defun my-c-mode-hook ()
-;;  (c-add-style "RANDY" randys-c-style t)
+  (c-add-style "RANDY" randys-c-style t)
   (setq c-basic-offset 4)
   (define-key c-mode-base-map "." 'semantic-complete-self-insert)
   (define-key c-mode-base-map ">" 'semantic-complete-self-insert)
