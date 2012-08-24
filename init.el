@@ -152,7 +152,7 @@
     (global-set-key (kbd "C-c a") 'org-agenda))
 
 ;; Python stuff
-(setq-default indent-tabls-mode nil)
+(setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 (defun my-python-mode-hook ()
   (define-key python-mode-map "." 'semantic-complete-self-insert)
