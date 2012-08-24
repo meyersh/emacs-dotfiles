@@ -15,7 +15,8 @@
  '(c-report-syntactic-errors t)
  '(column-number-mode t)
  '(confirm-kill-emacs nil)
- '(custom-safe-themes (quote ("6938c51c0a89f078c61b979af23ae4c32204458f16a6a08c1a683ab478a7bc6b" "6cfe5b2f818c7b52723f3e121d1157cf9d95ed8923dbc1b47f392da80ef7495d" default)))
+ '(cursor-type (quote bar) t)
+ '(custom-safe-themes (quote ("1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "6938c51c0a89f078c61b979af23ae4c32204458f16a6a08c1a683ab478a7bc6b" "6cfe5b2f818c7b52723f3e121d1157cf9d95ed8923dbc1b47f392da80ef7495d" default)))
  '(haskell-mode-hook (quote (turn-on-haskell-indentation)))
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
@@ -27,8 +28,7 @@
  '(printer-name "rh1comp")
  '(server-host "localhost")
  '(server-mode t)
- '(server-use-tcp t)
- '(cursor-type 'bar))
+ '(server-use-tcp t))
 ;;(custom-set-faces
 ;; custom-set-faces was added by Custom.
 ;; If you edit it by hand, you could mess it up, so be careful.
@@ -40,6 +40,7 @@
 (add-to-list 'load-path "~/.emacs.d/el")
 (add-to-list 'load-path "~/.emacs.d")
 (add-to-list 'load-path "~/.emacs.d/g-client")
+(add-to-list 'load-path "~/.emacs.d/local")
 
 ;; Bring in some common lisp (right now used for the `case` function below.
 (require 'cl)
@@ -246,7 +247,7 @@
 
 ;; Some pretty colors
 ;; (load-theme 'twilight) ;; This doesn't work for some reason.
-(load-theme 'zenburn)
+;(load-theme 'zenburn)
 
 ;; Yas Snippets
 (require 'yasnippet)
@@ -255,3 +256,5 @@
 ; Load all directories
 (mapc 'yas/load-directory yas/root-directory)
 
+;; Load my herdbook!
+(require 'phone-book-mode)
