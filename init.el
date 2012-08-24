@@ -107,21 +107,25 @@
 ;;;; cpp indentation (RANDY-MODE)
 ;; This is based on the GNU style with the basic-offset
 ;; set to 3 per the style guide
-;;(defconst randys-c-style
-;;  '("gnu"
-;;    (c-basic-offset . 3)
-;;    (c-offsets-alist
-;;     (statement-block-intro . 0))))
+(defconst randys-c-style
+ '("gnu"
+   (c-basic-offset . 3)
+   (c-offsets-alist
+    (statement-block-intro . 0))))
+
+;; Hello, Emacs.
+(setq user-full-name "Shaun Meyer")
 
 (defconst gnu-c-style-with-4-spaces
   '("gnu"
      (c-basic-offset . 4)))
 
 (defun my-c-mode-hook ()
-;;  (c-add-style "RANDY" randys-c-style t)
+  (c-add-style "RANDY" randys-c-style t)
   (setq c-basic-offset 4)
   (define-key c-mode-base-map "." 'semantic-complete-self-insert)
-  (define-key c-mode-base-map ">" 'semantic-complete-self-insert))
+  (define-key c-mode-base-map ">" 'semantic-complete-self-insert)
+  (yas-minor-mode-on))
 
 (add-hook 'c-mode-common-hook 'my-c-mode-hook)
 
@@ -149,7 +153,7 @@
     (global-set-key (kbd "C-c a") 'org-agenda))
 
 ;; Python stuff
-(setq-default indent-tabls-mode nil)
+(setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 (defun my-python-mode-hook ()
   (define-key python-mode-map "." 'semantic-complete-self-insert)
@@ -252,7 +256,8 @@
 ;; Yas Snippets
 (require 'yasnippet)
 (setq yas/root-directory '("~/.emacs.d/yassnippets/"))
-                          
+(setq yas/prompt-functions '(yas/ido-prompt
+                             yas/completing-prompt))                          
 ; Load all directories
 (mapc 'yas/load-directory yas/root-directory)
 
