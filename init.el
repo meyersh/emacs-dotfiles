@@ -112,6 +112,9 @@
 ;;    (c-offsets-alist
 ;;     (statement-block-intro . 0))))
 
+;; Hello, Emacs.
+(setq user-full-name "Shaun Meyer")
+
 (defconst gnu-c-style-with-4-spaces
   '("gnu"
      (c-basic-offset . 4)))
@@ -120,7 +123,8 @@
 ;;  (c-add-style "RANDY" randys-c-style t)
   (setq c-basic-offset 4)
   (define-key c-mode-base-map "." 'semantic-complete-self-insert)
-  (define-key c-mode-base-map ">" 'semantic-complete-self-insert))
+  (define-key c-mode-base-map ">" 'semantic-complete-self-insert)
+  (yas-minor-mode-on))
 
 (add-hook 'c-mode-common-hook 'my-c-mode-hook)
 
@@ -251,7 +255,8 @@
 ;; Yas Snippets
 (require 'yasnippet)
 (setq yas/root-directory '("~/.emacs.d/yassnippets/"))
-                          
+(setq yas/prompt-functions '(yas/ido-prompt
+                             yas/completing-prompt))                          
 ; Load all directories
 (mapc 'yas/load-directory yas/root-directory)
 
