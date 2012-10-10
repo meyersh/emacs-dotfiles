@@ -111,7 +111,8 @@
  '("gnu"
    (c-basic-offset . 3)
    (c-offsets-alist
-    (statement-block-intro . 0))))
+    (statement-block-intro . 0)
+    (substatement-open . +))))
 
 ;; Hello, Emacs.
 (setq user-full-name "Shaun Meyer")
@@ -125,7 +126,8 @@
   (setq c-basic-offset 4)
   (define-key c-mode-base-map "." 'semantic-complete-self-insert)
   (define-key c-mode-base-map ">" 'semantic-complete-self-insert)
-  (yas-minor-mode-on))
+  (yas-minor-mode-on)
+  (electric-pair-mode nil))
 
 (add-hook 'c-mode-common-hook 'my-c-mode-hook)
 
