@@ -159,7 +159,7 @@
 (setq-default tab-width 4)
 (defun my-python-mode-hook ()
   (define-key python-mode-map "." 'semantic-complete-self-insert)
-  (line-number-mode 1))
+  (linum-mode t))
 
 (add-hook 'python-mode-hook 'my-python-mode-hook)
 
