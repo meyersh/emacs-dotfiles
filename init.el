@@ -60,6 +60,10 @@
 (autoload 'puppet-mode "puppet-mode" "Major mode for editing puppet code." t)
 (add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
 
+;; CFEngine stuff
+;(autoload 'cfengine3-mode "cfengine3-mode" "Major mode for editing cfengine code." t)
+(add-to-list 'auto-mode-alist '("\\.cf$" . cfengine3-mode))
+
 ;; Autopair stuff.
 ;;(require 'autopair)
 ;;(autopair-global-mode) ;; enable autopair in all buffers 
@@ -70,7 +74,7 @@
 (setq tramp-default-method "ssh")
 
 ;; Set default browser to macosx-default-browser otherwise 
-;; /usr/bin/firefox, depending on platform.
+;; use browser path, depending on platform.
 (case system-type
   ('darwin
    (setq browse-url-generic-function 'browse-url-default-macosx-browser))
@@ -254,6 +258,10 @@
 ;; Some pretty colors
 ;; (load-theme 'twilight) ;; This doesn't work for some reason.
 ;(load-theme 'zenburn)
+;; Conditionally load solarized-light on fiery, dark on the rest. 
+(if (string= system-name "fiery")
+    (load-theme 'solarized-light)
+    (load-theme 'solarized-dark))
 
 ;; Yas Snippets
 (require 'yasnippet)
@@ -265,3 +273,35 @@
 
 ;; Load my herdbook!
 (require 'phone-book-mode)
+
+;; Whattheemacsd?!
+(defun open-line-below ()
+  (interactive)
+  (end-of-line)
+  (newline)
+  (indent-for-tab-command))
+
+(defun open-line-above ()
+  (interactive)
+  (beginning-of-line)
+  (newline)
+  (forward-line -1)
+  (indent-for-tab-command))
+
+(global-set-key (kbd "<C-return>") 'open-line-below)
+(global-set-key (kbd "<C-S-return>") 'open-line-above)
+
+
+;; Web-mode stuffs
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.jsp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+
+;; hilight the current line.
+(global-hl-line-mode)
