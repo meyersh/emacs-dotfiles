@@ -173,25 +173,44 @@
 
 ;; Ido mode (pretty cool)
 (ido-mode t)
+(ido-vertical-mode t)
 (setq ido-enable-flex-matching t) ; fuzzy matching is a must have
 
-;; Put autosave files (ie #foo#) and backup files (ie foo~) in ~/.emacs.d/.
+;; Recent files
+(require 'recentf)
+(recentf-mode t)
+(setq recentf-max-menu-items 100)
+(global-set-key "\C-x\ \Cx-r" 'ido-recentf-open)
 
+(defun ido-recentf-open ()
+  "Use `ido-completing-read' to \\[find-file] a recent file"
+  (interactive)
+  (if (find-file (ido-completing-read "Find recent file: " recentf-list))
+      (message "Opening file...")
+    (message "Aborting")))
+
+;; Put autosave files (ie #foo#) and backup files (ie foo~) in ~/.emacs.d/.
 
 ;; create the autosave dir if necessary, since emacs won't.
 (make-directory "~/.emacs-autosaves/" t)
 (make-directory "~/.emacs-backups/" t)
 
 ;; Enable cedet
-(load-file "~/.emacs.d/cedet/common/cedet.el")
+;;(load-file "~/.emacs.d/cedet/common/cedet.el")
 ;; Save semantic stuff in ~/.emacs.d/semanticdb
 (setq semanticdb-default-save-directory "~/.emacs.d/semanticdb")
 
 ;; I don't really plan on using projects.
-(global-ede-mode nil)
-(require 'semantic-ia)
-(semantic-load-enable-gaudy-code-helpers)
-(semantic-add-system-include "/usr/local/lib/python2.7" 'python-mode)
+(global-ede-mode 1)
+(semantic-mode 1)
+(global-semantic-idle-completions-mode t)
+(global-semantic-decoration-mode t)
+(global-semantic-highlight-func-mode t)
+(global-semantic-show-unmatched-syntax-mode t)
+
+;;(require 'semantic-ia)
+;; (semantic-load-enable-gaudy-code-helpers)
+;; (semantic-add-system-include "/usr/local/lib/python2.7" 'python-mode)
 ;;(setq semantic-python-dependency-system-include-path
 ;;      '("/usr/lib/python2.6/"))
 
