@@ -16,7 +16,7 @@
  '(column-number-mode t)
  '(confirm-kill-emacs nil)
  '(cursor-type (quote bar) t)
- '(custom-safe-themes (quote ("1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "6938c51c0a89f078c61b979af23ae4c32204458f16a6a08c1a683ab478a7bc6b" "6cfe5b2f818c7b52723f3e121d1157cf9d95ed8923dbc1b47f392da80ef7495d" default)))
+ '(custom-safe-themes (quote ("f61972772958e166cda8aaf0eba700aad4faa0b4101cee319e894e7a747645c9" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "6938c51c0a89f078c61b979af23ae4c32204458f16a6a08c1a683ab478a7bc6b" "6cfe5b2f818c7b52723f3e121d1157cf9d95ed8923dbc1b47f392da80ef7495d" default)))
  '(haskell-mode-hook (quote (turn-on-haskell-indentation)))
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
@@ -36,11 +36,19 @@
 ;; If there is more than one, they won't work right.
 ;; '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 113 :width normal :foundry "unknown" :family "DejaVu Sans Mono")))))
 
-(add-to-list 'load-path "~/.emacs-extensions") ;; comment if autopair.el is in standard load path 
+(add-to-list 'load-path "~/.emacs-extensions") ;; comment if autopair.el is in standard load path
 (add-to-list 'load-path "~/.emacs.d/el")
 (add-to-list 'load-path "~/.emacs.d")
 (add-to-list 'load-path "~/.emacs.d/g-client")
 (add-to-list 'load-path "~/.emacs.d/local")
+
+;; Some font
+(set-default-font "Inconsolata-16")
+
+;; (defun init--install-packages ()
+;;   (packages-install
+;;    '(magit paredit)))
+
 
 ;; Bring in some common lisp (right now used for the `case` function below.
 (require 'cl)
@@ -53,7 +61,6 @@
 
 ;; PHP stuff
 (autoload 'php-mode "php-mode" "Major mode for editing php code." t)
-(add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
 (add-to-list 'auto-mode-alist '("\\.inc$" . php-mode))
 
 ;; Puppet stuff
@@ -66,38 +73,61 @@
 
 ;; Autopair stuff.
 ;;(require 'autopair)
-;;(autopair-global-mode) ;; enable autopair in all buffers 
+;;(autopair-global-mode) ;; enable autopair in all buffers
 ;;
 
 ;; Tramp settings
 (require 'tramp)
 (setq tramp-default-method "ssh")
 
-;; Set default browser to macosx-default-browser otherwise 
-;; use browser path, depending on platform.
-(case system-type
-  ('darwin
-   (setq browse-url-generic-function 'browse-url-default-macosx-browser))
-  ('gnu/linux
-   (setq browse-url-generic-program "/usr/bin/google-chrome"
-		 browse-url-browser-function 'browse-url-generic))
-  ('berkeley-unix
-   (setq browse-url-generic-program "/usr/local/bin/chrome"
-		 browse-url-browser-function 'browse-url-generic)))
-
 ;; Dim parens in lisp-like languages.
 (require 'parenface)
 (set-face-foreground 'paren-face "gray75")
 
-;;;; SLIME Stuff
-(case system-type
-  ('darwin     
-   (setq inferior-lisp-program "/usr/local/bin/sbcl")) ; MacOSX Lisp system
-  ('gnu/linux
-   (setq inferior-lisp-program "/usr/bin/sbcl"))       ; Linux Lisp system
-  ('berkeley-unix
-   (setq inferior-lisp-program "/usr/local/bin/sbcl"))) ; FreeBSD Lisp system
+;; System-Specific settings
+(defun darwin-hook ()
+  "Apple-specific emacs configuration stuffs"
+  (setq browse-url-generic-function 'browse-url-default-macosx-browser)
 
+  (setq inferior-lisp-program "/usr/local/bin/sbcl")
+
+  (global-set-key (kbd "C-c a") 'org-agenda))
+
+(defun gnu-linux-hook ()
+  "GNU/Linux-specific emacs configuration stuffs"
+  (setq browse-url-generic-program "/usr/bin/google-chrome"
+        browse-url-browser-function 'browse-url-generic)
+
+  (setq inferior-lisp-program "/usr/bin/sbcl"))
+
+(defun berkley-unix-hook ()
+  "FreeBSD-specific emacs configuration stuffs"
+  (setq browse-url-generic-program "/usr/local/bin/chrome"
+        browse-url-browser-function 'browse-url-generic)
+
+  (semantic-add-system-include "/usr/include/c++/4.2" 'c++-mode)
+  (semantic-add-system-include "/usr/include/c++/4.2" 'c-mode)
+
+  (load-library "git")
+  (load-library "git-blame")
+  (load-library "vc-git")
+  (add-to-list 'vc-handled-backends 'GIT)
+
+  (setq inferior-lisp-program "/usr/local/bin/sbcl"))
+
+(defun solaris-unix-hook ()
+  "Solaris-specific emacs configuration stuffs"
+  ; Fix meta
+  (setq x-alt-keysym 'meta))
+
+(case system-type
+  ('darwin (darwin-hook))
+  ('gnu/linux (gnu-linux-hook))
+  ('berkeley-unix (berkley-unix-hook))
+  ('usg-unix-v (solaris-unix-hook))
+  (otherwise nil))
+
+;; Slime Stuff
 (setq lisp-indent-function 'common-lisp-indent-function
       slime-complete-symbol-function 'slime-fuzzy-complete-symbol)
 (add-to-list 'load-path "~/.emacs.d/slime/")  ; your SLIME directory
@@ -105,7 +135,7 @@
 (slime-setup '(slime-fancy)) ; almost everything
 
 ;;;; Lisp indentation
-(set (make-local-variable lisp-indent-function) 
+(set (make-local-variable lisp-indent-function)
      'common-lisp-indent-function)
 
 ;;;; cpp indentation (RANDY-MODE)
@@ -135,10 +165,6 @@
 
 (add-hook 'c-mode-common-hook 'my-c-mode-hook)
 
-;; fix meta on Solaris
-(if (eq system-type 'usg-unix-v)
-    (setq x-alt-keysym 'meta))
-
 ;; OrgMode keys
 (global-set-key (kbd "C-c a") 'org-agenda)
 
@@ -154,9 +180,6 @@
 (setq org-agenda-todo-ignore-scheduled t)
 
 (setq org-agenda-todo-list-sublevels t)
-
-(if (eq system-type 'darwin)
-    (global-set-key (kbd "C-c a") 'org-agenda))
 
 ;; Python stuff
 (setq-default indent-tabs-mode nil)
@@ -180,7 +203,7 @@
 (require 'recentf)
 (recentf-mode t)
 (setq recentf-max-menu-items 100)
-(global-set-key "\C-x\ \Cx-r" 'ido-recentf-open)
+(global-set-key (kbd "C-x C-r") 'ido-recentf-open)
 
 (defun ido-recentf-open ()
   "Use `ido-completing-read' to \\[find-file] a recent file"
@@ -214,13 +237,6 @@
 ;;(setq semantic-python-dependency-system-include-path
 ;;      '("/usr/lib/python2.6/"))
 
-;; FreeBSD paths
-(case system-type
-  ('berkeley-unix
-   (semantic-add-system-include "/usr/include/c++/4.2" 'c++-mode)
-   (semantic-add-system-include "/usr/include/c++/4.2" 'c-mode))
-  (t nil)) ; This is silly, but I may want to add other paths later.
-
 ;; Taken from the comment section in inf-ruby.el
 (autoload 'ruby-mode "ruby-mode" "Mode for editing ruby source files")
 (add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
@@ -233,65 +249,42 @@
 ;; Re-enable the erase-buffer command. Mua
 (put 'erase-buffer 'disabled nil)
 
-;; Git stuff
-(case system-type
-  ;; ('gnu/linux
-  ;;  (load "/usr/share/doc/git-1.7.7.6/contrib/emacs/git.el")
-  ;;  (load "/usr/share/doc/git-1.7.7.6/contrib/emacs/git-blame.el")
-  ;;  (load "/usr/share/emacs/23.3/lisp/vc-git.elc")
-  ;;   (add-to-list 'vc-handled-backends 'GIT))
-  ('berkeley-unix
-   (load-library "git")
-   (load-library "git-blame")
-   (load-library "vc-git")
-   (add-to-list 'vc-handled-backends 'GIT)))
-
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-
 ;; Haskell stuff
 ;(load "~/.emacs.d/haskell-mode/haskell-site-file")
-
+(setq haskell-font-lock-symbols t)
 
 ;; Ace move mode
 ;;(add-to-list 'load-path "~/.emacs.d/ace-jump-mode/")
 (require 'ace-jump-mode)
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
-;; Electric pair 
+;; Electric pair
 (electric-pair-mode)
 
 ;; Gmail?
 ;; (gnus config)
 (setq gnus-select-method '(nnimap "gmail"
-				  (nnimap-address "imap.gmail.com")
-				  (nnimap-server-port 993)
-				  (nnimap-stream ssl)))
-
-
-
-;; Some pretty colors
-;; (load-theme 'twilight) ;; This doesn't work for some reason.
-;(load-theme 'zenburn)
-;; Conditionally load solarized-light on fiery, dark on the rest. 
-(if (string= system-name "fiery")
-    (load-theme 'solarized-light)
-    (load-theme 'solarized-dark))
+                  (nnimap-address "imap.gmail.com")
+                  (nnimap-server-port 993)
+                  (nnimap-stream ssl)))
 
 ;; Yas Snippets
 (require 'yasnippet)
 (setq yas/root-directory '("~/.emacs.d/yassnippets/"))
 (setq yas/prompt-functions '(yas/ido-prompt
-                             yas/completing-prompt))                          
+                             yas/completing-prompt))
 ; Load all directories
 (mapc 'yas/load-directory yas/root-directory)
 
-;; Load my herdbook!
+;; Load my programs
 (require 'phone-book-mode)
+(require 'phonetic-alphabet-mode)
+
+;; Load Nagios-Mode stuff
+(autoload
+'nagios-mode "$HOME/.emacs.d/local/nagios-mode.el" "Major mode
+for editing Nagios Config Files" t)
+(add-to-list 'auto-mode-alist '("nagios/etc/.+\\.cfg$" . nagios-mode))
 
 ;; Whattheemacsd?!
 (defun open-line-below ()
@@ -310,6 +303,11 @@
 (global-set-key (kbd "<C-return>") 'open-line-below)
 (global-set-key (kbd "<C-S-return>") 'open-line-above)
 
+;; Highlight matching parens
+(show-paren-mode t)
+(set-face-attribute 'show-paren-match nil :weight 'extra-bold)
+(setq show-paren-delay 0)
+(setq show-paren-style 'mixed)
 
 ;; Web-mode stuffs
 (require 'web-mode)
@@ -321,6 +319,52 @@
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tmpl\\'" . web-mode))
 
 ;; hilight the current line.
 (global-hl-line-mode)
+;(global-highlight-parentheses-mode t)
+(show-paren-mode t)
+
+;; nuke whitespaces when writing to a file
+(add-hook 'before-save-hook 'whitespace-cleanup)
+
+;; Exuberant ctags
+(setq tags-revert-without-query t)
+(require 'ctags)
+(global-set-key (kbd "<f7>") 'ctags-create-or-update-tags-table)
+
+;; Auto-complete
+(require 'auto-complete-config)
+(ac-config-default)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+
+;; Git rules
+(global-set-key (kbd "C-x g") 'magit-status)
+
+;; Org mode stuff
+(setq org-publish-project-alist
+      '(("org"
+         :base-directory "~/Dropbox/OrgMode/"
+         :publishing-directory "~/public_html"
+         :section-numbers nil
+         :with-toc t
+         :makeindex t
+         :html-head "<link rel=\"stylesheet\"
+                         href=\"../other/mystyle.css\"
+                         type=\"text/css\"/>")))
+
+;; Shauns Functions
+(defun puff-string (search)
+  "Do a forward search for `search` and put spaces around it."
+    (interactive "sString to puff: ")
+    (beginning-of-line)
+    (search-forward search (line-end-position) nil 1)
+    (replace-match (concat " " search " ") nil t))
+
+(global-set-key (kbd "C-x SPC") 'puff-string)
+
+
+;; Some pretty colors
+(if window-system
+    (load-theme 'solarized-light))
