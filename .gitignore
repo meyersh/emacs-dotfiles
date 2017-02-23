@@ -4,3 +4,4 @@ tramp
 web-vcs-log.org
 semanticdb/
 server/
+*.pyc

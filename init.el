@@ -11,18 +11,27 @@
  ;; If there is more than one, they won't work right.
  '(auto-save-file-name-transforms (quote ((".*" "~/.emacs-autosaves/\\1" t))))
  '(backup-directory-alist (quote ((".*" . "~/.emacs-backups/"))))
- '(c-default-style (quote ((java-mode . "java") (awk-mode . "awk") (other . "gnu"))))
+ '(c-default-style
+   (quote
+    ((java-mode . "java")
+     (awk-mode . "awk")
+     (other . "gnu"))))
  '(c-report-syntactic-errors t)
  '(column-number-mode t)
  '(confirm-kill-emacs nil)
- '(cursor-type (quote bar) t)
- '(custom-safe-themes (quote ("f61972772958e166cda8aaf0eba700aad4faa0b4101cee319e894e7a747645c9" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "6938c51c0a89f078c61b979af23ae4c32204458f16a6a08c1a683ab478a7bc6b" "6cfe5b2f818c7b52723f3e121d1157cf9d95ed8923dbc1b47f392da80ef7495d" default)))
+ '(cursor-type (quote bar))
+ '(custom-safe-themes
+   (quote
+    ("3ac266781ee0ac3aa74a6913a1506924cad669f111564507249f0ffa7c5e4b53" "9dae95cdbed1505d45322ef8b5aa90ccb6cb59e0ff26fef0b8f411dfc416c552" "146d24de1bb61ddfa64062c29b5ff57065552a7c4019bee5d869e938782dfc2a" "11d069fbfb0510e2b32a5787e26b762898c7e480364cbc0779fe841662e4cf5d" "f61972772958e166cda8aaf0eba700aad4faa0b4101cee319e894e7a747645c9" "1e7e097ec8cb1f8c3a912d7e1e0331caeed49fef6cff220be63bd2a6ba4cc365" "fc5fcb6f1f1c1bc01305694c59a1a861b008c534cae8d0e48e4d5e81ad718bc6" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "6938c51c0a89f078c61b979af23ae4c32204458f16a6a08c1a683ab478a7bc6b" "6cfe5b2f818c7b52723f3e121d1157cf9d95ed8923dbc1b47f392da80ef7495d" default)))
+ '(global-linum-mode t)
  '(haskell-mode-hook (quote (turn-on-haskell-indentation)))
  '(indent-tabs-mode nil)
  '(inhibit-startup-screen t)
  '(lpr-command "/usr/bin/lpr")
  '(nxhtml-autoload-web nil t)
- '(org-agenda-files (quote ("~/Work.org")))
+ '(org-agenda-files
+   (quote
+    ("~/Google Drive/Coursework/Numerical Analysis/Notes.org" "/Users/meyersh/Google Drive/OrgMode/AntiTodo.org" "/Users/meyersh/Google Drive/OrgMode/LH-switch-checklist.org" "/Users/meyersh/Google Drive/OrgMode/aruba.org" "/Users/meyersh/Google Drive/OrgMode/bash.org" "/Users/meyersh/Google Drive/OrgMode/brh-netinstall.org" "/Users/meyersh/Google Drive/OrgMode/brh.org" "/Users/meyersh/Google Drive/OrgMode/calendar_codereview.org" "/Users/meyersh/Google Drive/OrgMode/cweb.org" "/Users/meyersh/Google Drive/OrgMode/gtd.org" "/Users/meyersh/Google Drive/OrgMode/homework (lapper7's conflicted copy 2015-04-21).org" "/Users/meyersh/Google Drive/OrgMode/homework.org" "/Users/meyersh/Google Drive/OrgMode/index.org" "/Users/meyersh/Google Drive/OrgMode/jesse-demo.org" "/Users/meyersh/Google Drive/OrgMode/messages.org" "/Users/meyersh/Google Drive/OrgMode/meyersh_ical.org" "/Users/meyersh/Google Drive/OrgMode/moodle-old.org" "/Users/meyersh/Google Drive/OrgMode/moodle-upgrade.org" "/Users/meyersh/Google Drive/OrgMode/moodle.org" "/Users/meyersh/Google Drive/OrgMode/network.org" "/Users/meyersh/Google Drive/OrgMode/notes.org" "/Users/meyersh/Google Drive/OrgMode/rt.org" "/Users/meyersh/Google Drive/OrgMode/sitemap.org" "/Users/meyersh/Google Drive/OrgMode/ssl.org" "/Users/meyersh/Google Drive/OrgMode/switch-connectivity-checklist.org" "/Users/meyersh/Google Drive/OrgMode/switches-checklist.org" "/Users/meyersh/Google Drive/OrgMode/theindex.org" "/Users/meyersh/Google Drive/OrgMode/todo.org" "/Users/meyersh/Google Drive/OrgMode/wordpress.org" "/Users/meyersh/Google Drive/Coursework/Real Analysis/hw2.1.org" "/Users/meyersh/Google Drive/Coursework/Real Analysis/realanalysis.org" "/Users/meyersh/Google Drive/Coursework/Software Engineering/softwareeng.org")))
  '(org-fontify-done-headline nil)
  '(org-hide-leading-stars t)
  '(printer-name "rh1comp")
@@ -38,12 +47,11 @@
 
 (add-to-list 'load-path "~/.emacs-extensions") ;; comment if autopair.el is in standard load path
 (add-to-list 'load-path "~/.emacs.d/el")
-(add-to-list 'load-path "~/.emacs.d")
 (add-to-list 'load-path "~/.emacs.d/g-client")
 (add-to-list 'load-path "~/.emacs.d/local")
 
 ;; Some font
-(set-default-font "Inconsolata-16")
+;(set-default-font "Inconsolata-16")
 
 ;; (defun init--install-packages ()
 ;;   (packages-install
@@ -84,14 +92,36 @@
 (require 'parenface)
 (set-face-foreground 'paren-face "gray75")
 
+;; Function to set bash path for darwin
+(defun set-exec-path-from-shell-PATH ()
+  (let ((path-from-shell
+         (replace-regexp-in-string "[[:space:]\n]*$" ""
+                                   (shell-command-to-string "$SHELL -l -c 'echo $PATH'"))))
+    (setenv "PATH" path-from-shell)
+    (setq exec-path (split-string path-from-shell path-separator))))
+
 ;; System-Specific settings
 (defun darwin-hook ()
   "Apple-specific emacs configuration stuffs"
   (setq browse-url-generic-function 'browse-url-default-macosx-browser)
 
+  ; Add TexLive! to path
+  (setq exec-path (append exec-path '("/usr/texbin/")))
+
   (setq inferior-lisp-program "/usr/local/bin/sbcl")
 
-  (global-set-key (kbd "C-c a") 'org-agenda))
+  ; gpg isn't on emacs' path
+  (setq epg-gpg-program "/usr/local/bin/gpg")
+
+  (global-set-key (kbd "C-c a") 'org-agenda)
+
+  ; Allow us to use Option-Click and Cmd-Click to get to some of the
+  ; flyspell goodness.
+  (setq mac-emulate-three-button-mouse t)
+
+  (set-exec-path-from-shell-PATH))
+
+
 
 (defun gnu-linux-hook ()
   "GNU/Linux-specific emacs configuration stuffs"
@@ -130,7 +160,7 @@
 ;; Slime Stuff
 (setq lisp-indent-function 'common-lisp-indent-function
       slime-complete-symbol-function 'slime-fuzzy-complete-symbol)
-(add-to-list 'load-path "~/.emacs.d/slime/")  ; your SLIME directory
+;(add-to-list 'load-path "~/.emacs.d/slime/")  ; your SLIME directory
 (require 'slime-autoloads)
 (slime-setup '(slime-fancy)) ; almost everything
 
@@ -165,22 +195,6 @@
 
 (add-hook 'c-mode-common-hook 'my-c-mode-hook)
 
-;; OrgMode keys
-(global-set-key (kbd "C-c a") 'org-agenda)
-
-;; TODO Dependencies (protect blocked todo's)
-(setq org-enforce-todo-dependencies t)
-(setq org-enforce-todo-checkbox-dependencies t)
-(setq org-agenda-dim-blocked-tasks t)
-
-;; Log TODO done times
-(setq org-log-done 'time)
-
-;; Keep scheduled items out of global TODO list
-(setq org-agenda-todo-ignore-scheduled t)
-
-(setq org-agenda-todo-list-sublevels t)
-
 ;; Python stuff
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
@@ -188,16 +202,57 @@
   (define-key python-mode-map "." 'semantic-complete-self-insert)
   (linum-mode t))
 
+;(semantic-add-system-include "~/git/user_control/" 'python-mode)
+
 (add-hook 'python-mode-hook 'my-python-mode-hook)
+
+;; code checking via flymake
+;; set code checker here from "epylint", "pyflakes"
+(setq pycodechecker "/usr/local/bin/epylint")
+(when (load "flymake" t)
+  (defun flymake-pycodecheck-init ()
+    (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                       'flymake-create-temp-inplace))
+           (local-file (file-relative-name
+                        temp-file
+                        (file-name-directory buffer-file-name))))
+      (list pycodechecker (list local-file))))
+  (add-to-list 'flymake-allowed-file-name-masks
+               '("\\.py\\'" flymake-pycodecheck-init)))
 
 ;; Google Apps stuff
 (setq g-user-email "meyersh@morningside.edu")
 ;;(load-library "g")
 
 ;; Ido mode (pretty cool)
-(ido-mode t)
-(ido-vertical-mode t)
-(setq ido-enable-flex-matching t) ; fuzzy matching is a must have
+;(ido-mode t)
+;(ido-vertical-mode t)
+;(setq ido-enable-flex-matching t) ; fuzzy matching is a must have
+
+;; Helm mode
+(require 'helm-config)
+(setq helm-split-window-in-side-p           t ; open helm buffer inside current window, not occupy whole other window
+      helm-move-to-line-cycle-in-source     t ; move to end or beginning of source when reaching top or bottom of source.
+      helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
+      helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
+      helm-ff-file-name-history-use-recentf t
+      helm-M-x-fuzzy-match t ; optional fuzzy matching for helm-M-x
+)
+
+(global-set-key (kbd "M-x") 'helm-M-x)
+(global-set-key (kbd "C-x C-f") 'helm-find-files)
+
+(helm-mode 1)
+
+;; Helm-files (use mdfind on mac)
+(require 'helm-files)
+(setq helm-idle-delay 0.1)
+(setq helm-input-idle-delay 0.1)
+(setq helm-c-locate-command "~/.emacs.d/bin/helm-mdfind.sh %.0s %s")
+;(loop for ext in '("\\.swf$" "\\.elc$" "\\.pyc$")
+;      do (add-to-list 'helm-c-boring-file-regexp-list ext))
+(setq helm-c-boring-regexp-list '("\\.swf$" "\\.elc$" "\\.pyc$"))
+(define-key global-map (kbd "M-t") 'helm-for-files)
 
 ;; Recent files
 (require 'recentf)
@@ -343,16 +398,43 @@ for editing Nagios Config Files" t)
 (global-set-key (kbd "C-x g") 'magit-status)
 
 ;; Org mode stuff
+(add-hook 'org-mode-hook (lambda ()
+                           (turn-on-org-cdlatex)
+                           (org-indent-mode)
+                           (visual-line-mode)))
+
+(require 'ox-publish)
 (setq org-publish-project-alist
-      '(("org"
-         :base-directory "~/Dropbox/OrgMode/"
+      '(("Shauns-Stuff"
+         :base-directory "~/Google Drive/OrgMode/"
          :publishing-directory "~/public_html"
+         :publishing-function org-html-publish-to-html
          :section-numbers nil
          :with-toc t
          :makeindex t
          :html-head "<link rel=\"stylesheet\"
                          href=\"../other/mystyle.css\"
                          type=\"text/css\"/>")))
+
+;; Set to the location of your Org files on your local system
+(setq org-directory "~/Google Drive/OrgMode")
+
+;; Set to the name of the file where new notes will be stored
+(setq org-mobile-inbox-for-pull "~/Google Drive/OrgMode/flagged.org")
+;; Set to <your Google Drive root directory>/MobileOrg.
+(setq org-mobile-directory "~/Google Drive/Apps/MobileOrg")
+
+;; Fix a weird display issue in org clock tables
+(defun my-org-clocktable-indent-string (level)
+  (if (= level 1)
+      ""
+    (let ((str " \\"))
+      (while (> level 2)
+        (setq level (1- level)
+              str (concat str "--")))
+      (concat str "-> "))))
+
+(advice-add 'org-clocktable-indent-string :override #'my-org-clocktable-indent-string)
 
 ;; Shauns Functions
 (defun puff-string (search)
@@ -367,4 +449,15 @@ for editing Nagios Config Files" t)
 
 ;; Some pretty colors
 (if window-system
-    (load-theme 'solarized-light))
+    (load-theme 'leuven))
+
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+;(package-install 'auctex)
+
+;(require 'setup-orgmode)
