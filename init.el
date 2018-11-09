@@ -34,6 +34,9 @@
     ("~/Google Drive/Coursework/Numerical Analysis/Notes.org" "/Users/meyersh/Google Drive/OrgMode/AntiTodo.org" "/Users/meyersh/Google Drive/OrgMode/LH-switch-checklist.org" "/Users/meyersh/Google Drive/OrgMode/aruba.org" "/Users/meyersh/Google Drive/OrgMode/bash.org" "/Users/meyersh/Google Drive/OrgMode/brh-netinstall.org" "/Users/meyersh/Google Drive/OrgMode/brh.org" "/Users/meyersh/Google Drive/OrgMode/calendar_codereview.org" "/Users/meyersh/Google Drive/OrgMode/cweb.org" "/Users/meyersh/Google Drive/OrgMode/gtd.org" "/Users/meyersh/Google Drive/OrgMode/homework (lapper7's conflicted copy 2015-04-21).org" "/Users/meyersh/Google Drive/OrgMode/homework.org" "/Users/meyersh/Google Drive/OrgMode/index.org" "/Users/meyersh/Google Drive/OrgMode/jesse-demo.org" "/Users/meyersh/Google Drive/OrgMode/messages.org" "/Users/meyersh/Google Drive/OrgMode/meyersh_ical.org" "/Users/meyersh/Google Drive/OrgMode/moodle-old.org" "/Users/meyersh/Google Drive/OrgMode/moodle-upgrade.org" "/Users/meyersh/Google Drive/OrgMode/moodle.org" "/Users/meyersh/Google Drive/OrgMode/network.org" "/Users/meyersh/Google Drive/OrgMode/notes.org" "/Users/meyersh/Google Drive/OrgMode/rt.org" "/Users/meyersh/Google Drive/OrgMode/sitemap.org" "/Users/meyersh/Google Drive/OrgMode/ssl.org" "/Users/meyersh/Google Drive/OrgMode/switch-connectivity-checklist.org" "/Users/meyersh/Google Drive/OrgMode/switches-checklist.org" "/Users/meyersh/Google Drive/OrgMode/theindex.org" "/Users/meyersh/Google Drive/OrgMode/todo.org" "/Users/meyersh/Google Drive/OrgMode/wordpress.org" "/Users/meyersh/Google Drive/Coursework/Real Analysis/hw2.1.org" "/Users/meyersh/Google Drive/Coursework/Real Analysis/realanalysis.org" "/Users/meyersh/Google Drive/Coursework/Software Engineering/softwareeng.org")))
  '(org-fontify-done-headline nil)
  '(org-hide-leading-stars t)
+ '(package-selected-packages
+   (quote
+    (markdown-mode clojure-snippets clojure-mode terraform-mode yaml-mode py-yapf zenburn-theme zenburn yasnippet web-mode w3 twittering-mode twilight-theme tidy solarized-theme smooth-scroll slime paredit org mediawiki magit leuven-theme ido-vertical-mode helm haskell-mode ggtags evil ctags color-theme-solarized cdlatex auto-complete auctex ace-jump-mode)))
  '(printer-name "rh1comp")
  '(server-host "localhost")
  '(server-mode t)
@@ -285,6 +288,7 @@
 (global-semantic-decoration-mode t)
 (global-semantic-highlight-func-mode t)
 (global-semantic-show-unmatched-syntax-mode t)
+;(global-semantic-folding-mode t)
 
 ;;(require 'semantic-ia)
 ;; (semantic-load-enable-gaudy-code-helpers)
