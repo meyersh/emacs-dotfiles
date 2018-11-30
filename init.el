@@ -13,7 +13,7 @@
    (quote
     (("gnu" . "http://elpa.gnu.org/packages/")
      ("melpa-stable" . "http://stable.melpa.org/packages/"))))
- '(package-selected-packages (quote (haskell-mode))))
+ '(package-selected-packages (quote (use-package haskell-mode))))
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
@@ -21,9 +21,16 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+;; Add use-package
+(if (not (package-installed-p 'use-package))
+    (progn
+      (package-refresh-contents)
+      (package-install 'use-package)))
+
+(require 'use-package)
+
+;; Install missing packages by default.
+(setq use-package-always-ensure t)
+
+(use-package haskell-mode)
+
