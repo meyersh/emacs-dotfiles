@@ -19,7 +19,9 @@
    (quote
     (("gnu" . "http://elpa.gnu.org/packages/")
      ("melpa-stable" . "http://stable.melpa.org/packages/"))))
- '(package-selected-packages (quote (use-package haskell-mode))))
+ '(package-selected-packages
+   (quote
+    (exec-path-from-shell flycheck magit use-package haskell-mode))))
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
@@ -38,5 +40,16 @@
 ;; Install missing packages by default.
 (setq use-package-always-ensure t)
 
+;; Install flycheck for pylint usage (pip3 install pylint for that)
+(use-package flycheck)
+; os x fix for paths.
+(use-package exec-path-from-shell)
+(exec-path-from-shell-initialize)
+(global-flycheck-mode)
+
 (use-package haskell-mode)
 
+(use-package magit)
+
+(provide 'init)
+;;; init.el ends here
