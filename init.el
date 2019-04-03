@@ -418,7 +418,14 @@ for editing Nagios Config Files" t)
          :makeindex t
          :html-head "<link rel=\"stylesheet\"
                          href=\"../other/mystyle.css\"
-                         type=\"text/css\"/>")))
+                         type=\"text/css\"/>")
+        ("OPS-Google-Drive"
+         :base-directory "/Volumes/GoogleDrive/Team Drives/OPS/"
+         :publishing-directory "/Volumes/GoogleDrive/Team Drives/OPS/public_html"
+         :publishing-function org-html-publish-to-html
+         :section-numbers nil
+         :with-toc t
+         :makeindex t)))
 
 ;; Set to the location of your Org files on your local system
 (setq org-directory "~/Google Drive/OrgMode")
