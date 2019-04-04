@@ -2,3 +2,7 @@ auto-save-list
 elpa
 tramp
 *~
+recentf
+ede-projects.el
+ac-comphist.dat
+semanticdb/
