@@ -1,4 +1,10 @@
-(provide 'phonetic-alphabet-mode)
+;;; phonetic-alphabet-mode --- Simple phonetic alphabet helper
+
+;;; Commentary:
+;; A few simple functions to show letters and words in the nato-phonetic form.
+
+;;; Code:
+
 "Shaun Meyer, Jan 2014"
 
 (defvar phonetic-alphabet '(("A" . "Alfa") ("B" . "Bravo") ("C" . "Charlie")
@@ -17,11 +23,16 @@
 
 ; Retrieve a given entry from the list:
 (defun lookup-phonetic-letter (letter)
-  "Given a character (string), give back to string
-representation. E.g. S -> Sierra"
+  "Convert a LETTER to the nato-alphabet word.
+Given a character (string), give back to string
+representation.  E.g.  S -> Sierra"
   (cdr (assoc (char-to-string (upcase letter)) phonetic-alphabet)))
 
 
 (defun lookup-phonetic-string (str)
+  "Spell out a STR in the nato-alphabet."
   (interactive "sThe word(s): ")
   (message (mapconcat 'lookup-phonetic-letter (upcase str) " ")))
+
+(provide 'phonetic-alphabet-mode)
+;;; phonetic-alphabet-mode.el ends here
