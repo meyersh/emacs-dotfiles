@@ -74,6 +74,9 @@
 (autoload 'puppet-mode "puppet-mode" "Major mode for editing puppet code." t)
 (add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
 
+;; YAML stuff
+(use-package yaml-mode)
+
 ;; Tramp settings
 (require 'tramp)
 (setq tramp-default-method "ssh")
