@@ -68,6 +68,8 @@
 (use-package haskell-mode)
 
 (use-package magit)
+;(setq magit-git-executable "/usr/bin/git") ; This might be different
+;for remote hosts?
 
 ;; Puppet stuff
 (use-package puppet-mode)
