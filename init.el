@@ -17,8 +17,8 @@
 (setq g-user-email "meyersh@morningside.edu")
 
 ;; Give me my SWEET FONT.
-(set-face-attribute 'default t
-            :family "IBM Plex Mono" :height 145 :weight 'ExtraLight)
+(set-face-attribute 'default nil
+            :family "IBM Plex Mono" :height 240 :weight 'Regular)
 
 ;; Re-enable the erase-buffer command. Mua
 (put 'erase-buffer 'disabled nil)
