@@ -113,6 +113,8 @@
   ; flyspell goodness.
   (setq mac-emulate-three-button-mouse t)
 
+  (setq fortune-file "/usr/local/Cellar/fortune/9708/share/games/fortunes/")
+
  ;(set-exec-path-from-shell-PATH)
   )
 
