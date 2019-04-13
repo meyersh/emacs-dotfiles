@@ -203,6 +203,11 @@
 (set (make-local-variable lisp-indent-function)
      'common-lisp-indent-function)
 
+;; Completion stuff
+(use-package company
+    :config
+  (add-hook 'after-init-hook 'global-company-mode))
+
 ;; Git stuff
 (global-set-key (kbd "C-x g") 'magit-status)
 
