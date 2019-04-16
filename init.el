@@ -313,10 +313,18 @@
     (message "Aborting")))
 
 ;; Put autosave files (ie #foo#) and backup files (ie foo~) in ~/.emacs.d/.
+(let ((autosave-directory "~/.emacs-autosaves/")
+      (backups-directory "~/.emacs-backups/"))
 
-;; create the autosave dir if necessary, since emacs won't.
-(make-directory "~/.emacs-autosaves/" t)
-(make-directory "~/.emacs-backups/" t)
+  ;; create the autosave dir if necessary, since emacs won't.
+  (make-directory autosave-directory t)
+  (make-directory backups-directory t)
+
+  (setq backup-directory-alist
+        `((".*" . ,backups-directory)))
+
+  (setq auto-save-file-name-transforms
+        `((".*", autosave-directory))))
 
 (provide 'init)
 ;;; init.el ends here
