@@ -55,6 +55,7 @@
 ;; Install missing packages by default.
 (setq use-package-always-ensure t)
 
+(use-package dracula-theme)
 
 (use-package which-key
     :config
