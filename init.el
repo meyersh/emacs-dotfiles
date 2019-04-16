@@ -55,6 +55,11 @@
 ;; Install missing packages by default.
 (setq use-package-always-ensure t)
 
+
+(use-package which-key
+    :config
+  (which-key-mode))
+
 ;; nuke whitespaces when writing to a file
 (add-hook 'before-save-hook 'whitespace-cleanup)
 
