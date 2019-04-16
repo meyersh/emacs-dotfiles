@@ -13,6 +13,10 @@
 
 ;; Hello, Emacs.
 (setq user-full-name "Shaun Meyer")
+
+;; Prefer splitting side by side.
+(setq split-height-threshold 60)
+
 ;; Google Apps stuff
 (setq g-user-email "meyersh@morningside.edu")
 
