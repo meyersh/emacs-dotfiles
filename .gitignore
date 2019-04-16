@@ -6,3 +6,5 @@ recentf
 ede-projects.el
 ac-comphist.dat
 semanticdb/
+/eshell
+/request/curl-cookie-jar
