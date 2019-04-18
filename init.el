@@ -315,6 +315,9 @@
 (setq recentf-max-menu-items 500)
 (global-set-key (kbd "C-x C-r") 'helm-recentf)
 
+;; Projectile (feeling cute, might delete later)
+(use-package projectile
+    :bind ("s-p" . 'projectile-command-map))
 
 ;; Put autosave files (ie #foo#) and backup files (ie foo~) in ~/.emacs.d/.
 (let ((autosave-directory "~/.emacs-autosaves/")
