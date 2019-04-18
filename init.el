@@ -92,6 +92,11 @@
 ;; Tramp settings
 (require 'tramp)
 (setq tramp-default-method "ssh")
+;; Use the path assigned to the remote user by the remote host.  TRAMP
+;; does not normally retain this remote path after logging.  However,
+;; ‘tramp-own-remote-path’ preserves the path value, which can be used
+;; to update ‘tramp-remote-path’.
+(add-to-list 'tramp-remote-path 'tramp-own-remote-path)
 
 ;; Dim parens in lisp-like languages.
 (use-package paren-face)
