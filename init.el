@@ -290,11 +290,12 @@
       helm-ff-search-library-in-sexp        t ; search for library in `require' and `declare-function' sexp.
       helm-scroll-amount                    8 ; scroll 8 lines other window using M-<next>/M-<prior>
       helm-ff-file-name-history-use-recentf t
-      helm-M-x-fuzzy-match t ; optional fuzzy matching for helm-M-x
+      helm-M-x-fuzzy-match                  t ; optional fuzzy matching for helm-M-x
 )
 
 (global-set-key (kbd "M-x") 'helm-M-x)
 (global-set-key (kbd "C-x C-f") 'helm-find-files)
+(global-set-key (kbd "C-x C-b") 'helm-mini)
 
 (helm-mode 1)
 
@@ -311,15 +312,9 @@
 ;; Recent files
 (require 'recentf)
 (recentf-mode t)
-(setq recentf-max-menu-items 100)
-(global-set-key (kbd "C-x C-r") 'ido-recentf-open)
+(setq recentf-max-menu-items 500)
+(global-set-key (kbd "C-x C-r") 'helm-recentf)
 
-(defun ido-recentf-open ()
-  "Use `ido-completing-read' to \\[find-file] a recent file"
-  (interactive)
-  (if (find-file (ido-completing-read "Find recent file: " recentf-list))
-      (message "Opening file...")
-    (message "Aborting")))
 
 ;; Put autosave files (ie #foo#) and backup files (ie foo~) in ~/.emacs.d/.
 (let ((autosave-directory "~/.emacs-autosaves/")
