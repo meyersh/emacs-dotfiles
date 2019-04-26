@@ -333,5 +333,9 @@
   (setq auto-save-file-name-transforms
         `((".*", autosave-directory))))
 
+;; Rediculous stuff.
+(use-package nyan-mode
+    :config (nyan-mode 1))
+
 (provide 'init)
 ;;; init.el ends here
