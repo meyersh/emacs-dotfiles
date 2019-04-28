@@ -250,6 +250,9 @@
 ;; Haskell stuff
 (setq haskell-font-lock-symbols t)
 
+;; Markdown stuff.
+(use-package markdown-mode)
+
 ;; Org mode stuff
 (setq org-agenda-files '("/Volumes/GoogleDrive/Team Drives/OPS/orgmode"
                          "~/orgmode"))
