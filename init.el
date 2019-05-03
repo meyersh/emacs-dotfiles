@@ -251,6 +251,9 @@
 (setq haskell-font-lock-symbols t)
 
 ;; Org mode stuff
+(setq org-agenda-files '("/Volumes/GoogleDrive/Team Drives/OPS/orgmode"
+                         "~/orgmode"))
+
 (add-hook 'org-mode-hook (lambda ()
                (turn-on-org-cdlatex)
                (org-indent-mode)
