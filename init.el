@@ -248,7 +248,8 @@
 (add-hook 'org-mode-hook (lambda ()
                (turn-on-org-cdlatex)
                (org-indent-mode)
-               (visual-line-mode)))
+               (visual-line-mode)
+               (toggle-word-wrap)))
 
 (require 'ox-publish)
 (setq org-publish-project-alist
