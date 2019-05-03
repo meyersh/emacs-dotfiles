@@ -124,6 +124,12 @@
 (setq show-paren-delay 0)
 (setq show-paren-style 'mixed)
 
+;; Maintain pairs.
+(use-package smartparens
+    :init (progn
+              (require 'smartparens-config)
+              (smartparens-strict-mode t)))
+
 ;; System-Specific settings
 (defun darwin-hook ()
   "Apple-specific Emacs configuration stuffs."
