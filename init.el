@@ -353,5 +353,9 @@
 (use-package nyan-mode
     :config (nyan-mode 1))
 
+;; Unicode stuff.
+(prefer-coding-system 'utf-8)
+(setq default-buffer-file-coding-system 'utf-8)
+
 (provide 'init)
 ;;; init.el ends here
