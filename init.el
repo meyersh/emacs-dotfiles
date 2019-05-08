@@ -128,7 +128,7 @@
 (use-package smartparens
     :init (progn
               (require 'smartparens-config)
-              (smartparens-strict-mode t)))
+              (global-smartparens-strict-mode t)))
 
 ;; System-Specific settings
 (defun darwin-hook ()
@@ -195,7 +195,7 @@
 (define-key global-map (kbd "C-c SPC") 'ace-jump-mode)
 
 ;; Electric pair
-(electric-pair-mode)
+;(electric-pair-mode)
 
 ;; Yas Snippets
 (use-package yasnippet)
