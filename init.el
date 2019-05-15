@@ -318,6 +318,12 @@
 (autoload 'inf-ruby-keys "inf-ruby" "Set local key defs for inf-ruby in ruby-mode")
 (add-hook 'ruby-mode-hook '(lambda () (inf-ruby-keys)))
 
+;; Smooth scrolling stuff
+(use-package smooth-scroll
+  :config
+  (smooth-scroll-mode 1)
+  (setq smooth-scroll/vscroll-step-size 5))
+
 ;; Web-mode stuffs
 (use-package web-mode)
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
