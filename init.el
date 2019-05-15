@@ -20,10 +20,6 @@
 ;; Google Apps stuff
 (setq g-user-email "meyersh@morningside.edu")
 
-;; Give me my SWEET FONT.
-(set-face-attribute 'default nil
-            :family "IBM Plex Mono" :height 240 :weight 'Regular)
-
 ;; Re-enable the erase-buffer command. Mua
 (put 'erase-buffer 'disabled nil)
 
@@ -152,6 +148,10 @@
 
   (setq fortune-file "/usr/local/Cellar/fortune/9708/share/games/fortunes/")
 
+  ;; Give me my SWEET FONT.
+  (set-face-attribute 'default nil
+                      :family "IBM Plex Mono" :height 240 :weight 'Regular)
+
  ;(set-exec-path-from-shell-PATH)
   )
 
@@ -159,6 +159,11 @@
   "GNU/Linux-specific Emacs configuration stuffs."
   (setq browse-url-generic-program "/usr/bin/google-chrome"
     browse-url-browser-function 'browse-url-generic)
+
+
+  ;; Give me my SWEET FONT.
+  (set-face-attribute 'default nil
+                      :family "IBM Plex Mono" :height 120 :weight 'Regular)
 
   (setq inferior-lisp-program "/usr/bin/sbcl"))
 
