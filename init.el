@@ -126,9 +126,10 @@
 
 ;; Maintain pairs.
 (use-package smartparens
-    :init (progn
-              (require 'smartparens-config)
-              (global-smartparens-strict-mode t)))
+    :config
+  (require 'smartparens-config)
+  (smartparens-global-strict-mode))
+
 
 ;; System-Specific settings
 (defun darwin-hook ()
