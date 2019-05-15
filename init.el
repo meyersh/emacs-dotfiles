@@ -259,6 +259,19 @@
 ;; Markdown stuff.
 (use-package markdown-mode)
 
+;; LaTeX stuff
+;; auxtex for texmathp.el, which is required for cdlatex, which I'd
+;; like to use for org mode...
+(use-package auctex
+    :defer t
+    :ensure t)
+
+(use-package cdlatex
+    :init
+  (add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)   ; with AUCTeX LaTeX mode
+  (add-hook 'latex-mode-hook 'turn-on-cdlatex)   ; with Emacs latex mode
+  )
+
 ;; Org mode stuff
 (setq org-agenda-files '("/Volumes/GoogleDrive/Team Drives/OPS/orgmode"
                          "~/orgmode"))
