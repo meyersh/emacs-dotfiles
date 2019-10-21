@@ -345,9 +345,12 @@
 
 ;; Recent files
 (require 'recentf)
+(setq recentf-auto-cleanup 'never) ;; disable before we start recentf!
+                                   ;; (tramp optimization)
 (recentf-mode t)
 (setq recentf-max-menu-items 500)
 (global-set-key (kbd "C-x C-r") 'helm-recentf)
+(run-at-time nil (* 5 60) 'recentf-save-list)
 
 ;; Projectile (feeling cute, might delete later)
 (use-package projectile
