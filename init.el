@@ -216,7 +216,7 @@
 (make-directory "~/.emacs.d/yassnippets" t)
 (setq yas/root-directory '("~/.emacs.d/yassnippets/"))
 (setq yas/prompt-functions '(yas/ido-prompt
-                 yas/completing-prompt))
+         yas/completing-prompt))
 ; Load all directories
 (mapc 'yas/load-directory yas/root-directory)
 
