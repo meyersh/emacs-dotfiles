@@ -386,16 +386,18 @@
 
 ;; Recent files
 (require 'recentf)
-(setq recentf-auto-cleanup 'never) ;; disable before we start recentf!
-                                   ;; (tramp optimization)
 (recentf-mode t)
 (setq recentf-max-menu-items 500)
-(global-set-key (kbd "C-x C-r") 'helm-recentf)
 (run-at-time nil (* 5 60) 'recentf-save-list)
+(global-set-key (kbd "C-x C-r") 'helm-recentf)
 
 ;; Projectile (feeling cute, might delete later)
+;"/ssh:puppet:/etc/puppetlabs/code/environments/"
+(use-package helm-projectile)
 (use-package projectile
-    :bind ("s-p" . 'projectile-command-map))
+    :bind ("s-p" . 'projectile-command-map)
+    :init (setq projectile-project-search-path '("~/git/" "~/code/" ))
+    :config (projectile-mode +1))
 
 ;; Put autosave files (ie #foo#) and backup files (ie foo~) in ~/.emacs.d/.
 (let ((autosave-directory "~/.emacs-autosaves/")
@@ -406,10 +408,10 @@
   (make-directory backups-directory t)
 
   (setq backup-directory-alist
-        `((".*" . ,backups-directory)))
+    `((".*" . ,backups-directory)))
 
   (setq auto-save-file-name-transforms
-        `((".*", autosave-directory))))
+    `((".*", autosave-directory))))
 
 ;; Rediculous stuff.
 (use-package nyan-mode
