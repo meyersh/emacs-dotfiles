@@ -343,7 +343,7 @@
 (use-package smooth-scroll
   :config
   (smooth-scroll-mode 1)
-  (setq smooth-scroll/vscroll-step-size 5))
+  (setq smooth-scroll/vscroll-step-size 2))
 
 ;; Web-mode stuffs
 (use-package web-mode)
