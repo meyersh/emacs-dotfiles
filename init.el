@@ -58,23 +58,29 @@
 ;(use-package dracula-theme)
 (use-package doom-themes
     :init (progn
-            ;; Global settings (defaults)
-            (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-                  doom-themes-enable-italic t) ; if nil, italics is universally disabled
+        ;; Global settings (defaults)
+        (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+          doom-themes-enable-italic t) ; if nil, italics is universally disabled
 
-            ;; Load the theme (doom-one, doom-molokai, etc); keep in mind that each
-            ;; theme may have their own settings.
-            (load-theme 'doom-city-lights t))
+        ;; Load the theme (doom-one, doom-molokai, etc); keep in mind that each
+        ;; theme may have their own settings.
+        ;;(load-theme 'doom-city-lights t)
+        (load-theme 'modus-operandi t)
+        )
     :config (progn
-              ;; Enable flashing mode-line on errors
-              (doom-themes-visual-bell-config)
+          ;; Enable flashing mode-line on errors
+          (doom-themes-visual-bell-config)
 
-              ;; Enable custom neotree theme
-              (doom-themes-neotree-config)))  ; all-the-icons fonts must be installed!
+          ;; Enable custom neotree theme
+          (doom-themes-neotree-config)))  ; all-the-icons fonts must be installed!
 
 (use-package which-key
     :config
   (which-key-mode))
+
+(use-package doom-modeline
+    :config
+  (doom-modeline-mode 1))
 
 ;; nuke whitespaces when writing to a file
 (add-hook 'before-save-hook 'whitespace-cleanup)
@@ -154,9 +160,9 @@
 
   (setq fortune-file "/usr/local/Cellar/fortune/9708/share/games/fortunes/")
 
-  ;; Give me my SWEET FONT.
+  ;; Give me my SWEET FONT. (Was :height 240)
   (set-face-attribute 'default nil
-                      :family "IBM Plex Mono" :height 240 :weight 'Regular)
+              :family "IBM Plex Mono" :height 120 :weight 'Light)
 
  ;(set-exec-path-from-shell-PATH)
   )
@@ -169,7 +175,7 @@
 
   ;; Give me my SWEET FONT.
   (set-face-attribute 'default nil
-                      :family "IBM Plex Mono" :height 120 :weight 'Regular)
+              :family "IBM Plex Mono" :height 120 :weight 'Regular)
 
   (setq inferior-lisp-program "/usr/bin/sbcl"))
 
