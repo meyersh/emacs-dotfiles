@@ -240,6 +240,9 @@
 (require 'phone-book-mode)
 (require 'phonetic-alphabet-mode)
 
+(add-to-list 'load-path "~/.emacs.d/local/nagios-mode")
+(autoload 'nagios-mode "nagios-mode" nil t)
+
 ;; Slime Stuff
 (setq lisp-indent-function 'common-lisp-indent-function
       slime-complete-symbol-function 'slime-fuzzy-complete-symbol)
