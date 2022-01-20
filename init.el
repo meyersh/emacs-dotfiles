@@ -289,13 +289,19 @@
 
 ;; Org mode stuff
 (setq org-agenda-files '("/Volumes/GoogleDrive/Team Drives/OPS/orgmode"
-                         "~/orgmode"))
+             "~/orgmode"))
 
 (add-hook 'org-mode-hook (lambda ()
-               (turn-on-org-cdlatex)
-               (org-indent-mode)
-               (visual-line-mode)
-               (toggle-word-wrap)))
+           (turn-on-org-cdlatex)
+           (org-indent-mode)
+           (visual-line-mode t)
+           ;; Automatically tag DONE states :ARCHIVE: to keep them folded.
+           (org-map-entries
+        '(org-toggle-tag "ARCHIVE" 'on )
+        "/+DONE" 'file 'archive 'comment)))
+
+(use-package org-cliplink)
+
 
 (require 'ox-publish)
 (setq org-publish-project-alist
