@@ -117,10 +117,6 @@
 ;; to update ‘tramp-remote-path’.
 (add-to-list 'tramp-remote-path 'tramp-own-remote-path)
 
-;; Always use chewy as the jump host.
-;;(add-to-list 'tramp-default-proxies-alist
-;;         '(nil nil "/ssh:meyersh@chewbacca.morningside.edu:"))
-
 ;; Dim parens in lisp-like languages.
 (use-package paren-face)
 ;(require 'paren-face)
